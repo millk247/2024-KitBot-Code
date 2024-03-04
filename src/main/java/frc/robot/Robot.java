@@ -229,7 +229,7 @@ double feedpower = 0;
     
     //slower drive
     if (driver.getTriggerReleased() == true){
-      drivelimit = 0.5;
+      drivelimit = 0.6;
     }
     
     //set joystic movement to driving wheels ant then apply scale factor "drivelimit"
