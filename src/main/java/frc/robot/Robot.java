@@ -229,22 +229,22 @@ double feedpower = 0;
     
     //slower drive
     if (driver.getTriggerReleased() == true){
-      drivelimit = 0.5;
+      drivelimit = 0.75;
     }
     
     //set joystic movement to driving wheels ant then apply scale factor "drivelimit"
     //getX() calls for the x-direction of the joystic
     myDrive.arcadeDrive(-driver.getX()*drivelimit, -driver.getY()*drivelimit);
 
-    //feed
-    if (operator.getYButton()){
+  
+    if (operator.getAButton()){  //Feed
      launchpower = 0.5;
      feedpower = 0.5;
     }
   
 else {
-    //Launch
-     if (operator.getAButtonPressed()){
+  
+     if (operator.getYButtonPressed()){  //Launch
       timer1.reset();
     }
     else if (timer1.get() < 1.0){
@@ -255,7 +255,14 @@ else {
       launchpower = -1;
       feedpower = -1;
     }
-    
+
+    else if (operator.getXButtonPressed()){  //amp load
+      timer2.reset();
+    }
+    else if (timer2.get() < 1.0){
+      launchpower = -0.29;
+      feedpower = -0.6;
+    }
     else{
       launchpower = 0;
       feedpower = 0;
